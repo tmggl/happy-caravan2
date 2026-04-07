@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>هابي كرفان | تفاصيل الوحدة — أبها</title>
+    <meta name="description" content="تفاصيل الوحدة في هابي كرفان — إقامة فاخرة وسط طبيعة أبها الخلابة مع صور وفيديو وحجز فوري عبر واتساب." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="unit">
+    <div class="app-shell">
+      <header class="app-header compact-header glass-card">
+        <a class="back-link" href="index.html">← العودة للوحدات</a>
+        <div class="brand-row compact-brand">
+          <img class="brand-logo" src="assets/brand/logo.png" alt="شعار هابي كرفان" />
+          <div>
+            <p class="eyebrow">هابي كرفان — أبها 🌿</p>
+            <h1 id="unitTitle">جاري تحميل الوحدة...</h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content detail-page">
+        <section id="unitDetailStatus" class="status-card">لحظة واحدة — نحضّر لك تفاصيل هذه الوجهة ⛰️</section>
+
+        <section id="unitContent" class="hidden">
+          <section class="gallery-card">
+            <div class="gallery-track" id="galleryTrack"></div>
+            <div class="gallery-dots" id="galleryDots"></div>
+          </section>
+
+          <section class="detail-summary glass-card">
+            <div class="detail-price-row">
+              <div>
+                <p class="eyebrow">سعر الليلة</p>
+                <h2 id="unitPrice">--</h2>
+              </div>
+              <button class="primary-btn" type="button" id="detailVideoButton">🎥 شاهد الفيديو</button>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <span>الاسم</span>
+                <strong id="detailName">--</strong>
+              </div>
+              <div class="detail-item">
+                <span>الموقع</span>
+                <strong id="detailLocation">--</strong>
+              </div>
+            </div>
+            <div class="detail-copy">
+              <p class="eyebrow">الوصف</p>
+              <p id="detailDescription">--</p>
+            </div>
+          </section>
+
+          <section class="section-block" id="videoSection">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">شاهد الوحدة</p>
+                <h2>جولة بصرية قبل أن تحجز</h2>
+              </div>
+            </div>
+            <div id="videoPreviewCard" class="video-preview-card"></div>
+          </section>
+
+          <section class="section-block hidden" id="availabilitySection">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">التوفر</p>
+                <h2>التقويم المباشر</h2>
+              </div>
+              <div class="legend-row">
+                <span class="legend-chip available">متاح</span>
+                <span class="legend-chip booked">محجوز</span>
+              </div>
+            </div>
+            <div id="calendarContainer" class="calendar-stack"></div>
+          </section>
+
+          <section class="section-block booking-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">احجز تجربتك</p>
+                <h2>خطوة واحدة تفصلك عن الطبيعة</h2>
+              </div>
+            </div>
+            <form id="bookingForm" class="stack-form">
+              <div class="input-grid">
+                <label class="field">
+                  <span>اسمك الكريم</span>
+                  <input id="guestName" name="guestName" type="text" required placeholder="محمد عبدالله" />
+                </label>
+                <label class="field">
+                  <span>رقم جوالك</span>
+                  <input id="guestPhone" name="guestPhone" type="tel" required placeholder="05XXXXXXXX" />
+                </label>
+              </div>
+
+              <div class="input-grid">
+                <label class="field">
+                  <span>من</span>
+                  <input id="dateFrom" name="dateFrom" type="date" required />
+                </label>
+                <label class="field">
+                  <span>إلى</span>
+                  <input id="dateTo" name="dateTo" type="date" required />
+                </label>
+              </div>
+
+              <div id="bookingSelectionSummary" class="inline-note">
+                📅 اختر تواريخ رحلتك — سيُحسب السعر تلقائياً لك.
+              </div>
+
+              <button id="whatsAppBookingButton" class="primary-btn whatsapp-btn full-width" type="submit">
+                💬 احجز الآن عبر واتساب
+              </button>
+            </form>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav bottom-nav-2col" aria-label="التنقل السفلي">
+        <a class="bottom-nav-link" href="index.html">
+          <span class="nav-icon">🏠</span>
+          <span>الرئيسية</span>
+        </a>
+        <a class="bottom-nav-link mobile-book-cta" href="#bookingForm">
+          <span class="nav-icon">💬</span>
+          <span>احجز الآن</span>
+        </a>
+      </nav>
+    </div>
+
+    <div id="videoModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel video-modal-panel" role="dialog" aria-modal="true" aria-label="مشغل الفيديو">
+        <button class="icon-btn modal-close" type="button" data-close-modal aria-label="إغلاق الفيديو">
+          ×
+        </button>
+        <div class="modal-head">
+          <p class="eyebrow">فيديو الوحدة</p>
+          <h3 id="videoModalTitle">معاينة الفيديو</h3>
+        </div>
+        <video id="modalVideo" controls playsinline preload="none"></video>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="assertive"></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>هابي كرفان | لوحة الإدارة</title>
+    <meta name="description" content="لوحة إدارة هابي كرفان." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="admin">
+
+    <!-- ═══════════════════════════════════════════
+         شاشة تسجيل الدخول
+    ═══════════════════════════════════════════ -->
+    <div id="loginScreen" class="login-screen">
+      <div class="login-bg-art" aria-hidden="true">
+        <span class="login-orb login-orb-1"></span>
+        <span class="login-orb login-orb-2"></span>
+        <span class="login-orb login-orb-3"></span>
+      </div>
+      <div class="login-card">
+        <div class="login-brand">
+          <img src="assets/brand/logo.png" alt="شعار هابي كرفان" class="login-logo" />
+          <div>
+            <p class="login-brand-name">HAPPY CARAVAN</p>
+            <p class="login-brand-sub">لوحة التحكم</p>
+          </div>
+        </div>
+
+        <div class="login-divider"></div>
+
+        <h2 class="login-title">مرحباً بعودتك</h2>
+        <p class="login-hint">أدخل بيانات الدخول للمتابعة</p>
+
+        <div id="loginStatus" class="login-status hidden"></div>
+
+        <form id="loginForm" class="login-form">
+          <label class="login-field">
+            <span class="login-label">البريد الإلكتروني</span>
+            <div class="login-input-wrap">
+              <span class="login-input-icon">✉️</span>
+              <input id="adminEmail" name="adminEmail" type="email" required
+                placeholder="admin@example.com" autocomplete="email" />
+            </div>
+          </label>
+          <label class="login-field">
+            <span class="login-label">كلمة المرور</span>
+            <div class="login-input-wrap">
+              <span class="login-input-icon">🔒</span>
+              <input id="adminPassword" name="adminPassword" type="password" required
+                placeholder="••••••••" autocomplete="current-password" />
+            </div>
+          </label>
+          <button id="loginButton" class="login-submit" type="submit">
+            <span>دخول إلى اللوحة</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          </button>
+        </form>
+
+        <a href="index.html" class="login-back">← العودة إلى الموقع</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         لوحة الإدارة الرئيسية
+    ═══════════════════════════════════════════ -->
+    <div id="dashboardApp" class="dash-app hidden">
+
+      <!-- شريط علوي -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-brand">
+          <img src="assets/brand/logo.png" alt="شعار" class="dash-topbar-logo" />
+          <span class="dash-topbar-name">هابي كرفان</span>
+        </div>
+        <div class="dash-topbar-center">
+          <div class="dash-stats-row">
+            <div class="dash-stat">
+              <strong id="unitsStat">0</strong>
+              <span>وحدة</span>
+            </div>
+            <div class="dash-stat-sep"></div>
+            <div class="dash-stat">
+              <strong id="pendingBookingsStat">0</strong>
+              <span>طلب معلّق</span>
+            </div>
+            <div class="dash-stat-sep"></div>
+            <div class="dash-stat">
+              <strong id="availabilityStat">0</strong>
+              <span>تقويم نشط</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-topbar-actions">
+          <a href="index.html" class="dash-topbar-btn" title="الموقع">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            الموقع
+          </a>
+          <button id="logoutButton" class="dash-topbar-btn dash-logout" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            خروج
+          </button>
+        </div>
+      </header>
+
+      <!-- محتوى اللوحة -->
+      <div class="dash-body">
+
+        <!-- شريط التبويبات الجانبي -->
+        <nav class="dash-sidebar" aria-label="التبويبات">
+          <button class="dash-tab is-active" data-tab="units">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>الوحدات</span>
+          </button>
+          <button class="dash-tab" data-tab="availability">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>التقويم</span>
+          </button>
+          <button class="dash-tab" data-tab="bookings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>الطلبات</span>
+            <span id="bookingsBadge" class="dash-badge hidden">0</span>
+          </button>
+        </nav>
+
+        <!-- منطقة المحتوى -->
+        <main class="dash-main">
+          <div id="adminStatus" class="dash-status hidden"></div>
+
+          <!-- ─── تبويب الوحدات ─── -->
+          <section id="tabUnits" class="dash-panel is-active">
+            <div class="dash-panel-header">
+              <div>
+                <p class="eyebrow">إدارة الوحدات</p>
+                <h2>إضافة وتعديل الوحدات</h2>
+              </div>
+              <button id="resetUnitForm" class="ghost-btn" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                وحدة جديدة
+              </button>
+            </div>
+
+            <div class="dash-two-col">
+              <!-- نموذج الإضافة -->
+              <div class="dash-form-col">
+                <div class="dash-form-card">
+                  <h3 class="dash-form-title">بيانات الوحدة</h3>
+                  <form id="unitForm" class="stack-form">
+                    <input id="editingUnitId" type="hidden" />
+
+                    <div class="input-grid">
+                      <label class="field">
+                        <span>اسم الوحدة</span>
+                        <input id="unitName" type="text" required placeholder="مثال: كرفان الشاطئ" />
+                      </label>
+                      <label class="field">
+                        <span>السعر / ليلة (ر.س)</span>
+                        <input id="unitPrice" type="number" min="0" step="1" required placeholder="450" />
+                      </label>
+                    </div>
+
+                    <label class="field">
+                      <span>الموقع</span>
+                      <input id="unitLocation" type="text" required placeholder="الرياض — الثمامة" />
+                    </label>
+
+                    <label class="field">
+                      <span>الوصف</span>
+                      <textarea id="unitDescription" rows="4" required placeholder="صف الوحدة ومميزاتها"></textarea>
+                    </label>
+
+                    <label class="field dash-toggle-field">
+                      <span>إظهار التقويم للعملاء</span>
+                      <label class="dash-toggle">
+                        <input id="showAvailability" type="checkbox" checked />
+                        <span class="dash-toggle-track"><span class="dash-toggle-thumb"></span></span>
+                      </label>
+                    </label>
+
+                    <div class="dash-upload-area">
+                      <h4 class="dash-upload-title">الصور والفيديو</h4>
+                      <div class="input-grid">
+                        <label class="field">
+                          <span>صور الوحدة</span>
+                          <input id="unitImages" type="file" accept="image/*" multiple />
+                        </label>
+                        <label class="field">
+                          <span>فيديو الوحدة</span>
+                          <input id="unitVideo" type="file" accept="video/*" />
+                        </label>
+                      </div>
+                      <div id="uploadStatus" class="dash-upload-note">لم يتم اختيار ملفات بعد.</div>
+                      <div id="existingMediaList" class="media-chip-grid"></div>
+                      <div id="existingVideoCard" class="video-chip-card hidden"></div>
+                    </div>
+
+                    <button id="saveUnitButton" class="primary-btn full-width" type="submit">حفظ الوحدة</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- قائمة الوحدات -->
+              <div class="dash-list-col">
+                <div class="dash-list-header">
+                  <h3 class="dash-form-title">الوحدات المضافة</h3>
+                </div>
+                <div id="adminUnitsList" class="admin-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ─── تبويب التقويم ─── -->
+          <section id="tabAvailability" class="dash-panel">
+            <div class="dash-panel-header">
+              <div>
+                <p class="eyebrow">إدارة التوفر</p>
+                <h2>تحديث تقويم الحجز</h2>
+              </div>
+            </div>
+            <div class="dash-two-col">
+              <div class="dash-form-col">
+                <div class="dash-form-card">
+                  <h3 class="dash-form-title">تعيين الفترة</h3>
+                  <form id="availabilityForm" class="stack-form">
+                    <label class="field">
+                      <span>الوحدة</span>
+                      <select id="availabilityUnitSelect" required>
+                        <option value="">اختر وحدة</option>
+                      </select>
+                    </label>
+                    <div class="input-grid">
+                      <label class="field">
+                        <span>من</span>
+                        <input id="availabilityFrom" type="date" required />
+                      </label>
+                      <label class="field">
+                        <span>إلى</span>
+                        <input id="availabilityTo" type="date" required />
+                      </label>
+                    </div>
+                    <label class="field">
+                      <span>الحالة</span>
+                      <select id="availabilityStatusSelect" required>
+                        <option value="available">✅ متاح</option>
+                        <option value="booked">🔴 محجوز</option>
+                      </select>
+                    </label>
+                    <button id="saveAvailabilityButton" class="primary-btn full-width" type="submit">
+                      حفظ الفترة
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="dash-list-col">
+                <div class="dash-list-header">
+                  <h3 class="dash-form-title">التواريخ المحفوظة</h3>
+                </div>
+                <div id="availabilityPreview" class="admin-list compact-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ─── تبويب الطلبات ─── -->
+          <section id="tabBookings" class="dash-panel">
+            <div class="dash-panel-header">
+              <div>
+                <p class="eyebrow">طلبات الحجز</p>
+                <h2>متابعة وإدارة الطلبات</h2>
+              </div>
+            </div>
+            <div id="bookingRequestsList" class="admin-list"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="assertive"></div>
+    <script type="module" src="js/admin.js"></script>
+  </body>
+</html>

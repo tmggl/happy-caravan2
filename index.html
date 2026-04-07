@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>هابي كرفان | إقامة فاخرة في أحضان طبيعة أبها</title>
+    <meta
+      name="description"
+      content="هابي كرفان — وحدات إقامة فاخرة وسط غابات أبها وإطلالات جبلية خلابة. استمتع بالهدوء والطبيعة مع عائلتك واحجز الآن عبر واتساب."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="home">
+    <div class="app-shell">
+      <header class="app-header glass-card">
+        <div class="brand-row">
+          <img class="brand-logo" src="assets/brand/logo.png" alt="شعار هابي كرفان" />
+          <span class="brand-title">هابي كرفان</span>
+          <div>
+            <p class="eyebrow">HAPPY CARAVAN — أبها 🌿</p>
+            <h1>في أحضان طبيعة أبها وإطلالاتها الخلابة</h1>
+          </div>
+        </div>
+        <p class="header-copy">
+          وحدات إقامة مميزة وسط الغابات والجبال — اختر وحدتك، شاهد الصور والفيديو، واحجز تجربتك في دقائق.
+        </p>
+      </header>
+
+      <main class="page-content">
+        <section class="hero-banner">
+          <div class="hero-gallery">
+            <div class="hero-gallery-main">
+              <img src="assets/hero/kB-5-nlRnev1CEaOfe2C6et4YFjoAPEQ.webp" alt="إطلالة من وحدات هابي كرفان على جبال أبها" loading="eager" />
+            </div>
+            <div class="hero-gallery-sub">
+              <img src="assets/hero/1.png" alt="أجواء الطبيعة في أبها" loading="eager" />
+              <img src="assets/hero/2.png" alt="منطقة الجلوس وسط الأشجار" loading="eager" />
+              <img src="assets/hero/3.png" alt="الوحدة من الداخل" loading="eager" />
+              <img src="assets/hero/wb6QJbKmtA41-8LWhayyRqwdUjDGgXum.webp" alt="حدائق وإطلالات خضراء" loading="eager" />
+              <img src="assets/hero/UjDQ6LyO4dHhB3iwsB2EqC3i4_UYyaAZ.jpg" alt="الضباب والغيوم فوق الجبال" loading="eager" />
+            </div>
+          </div>
+          <div class="hero-info">
+            <div class="hero-brand">
+              <img src="assets/brand/logo.png" alt="شعار هابي كرفان" class="hero-logo" />
+              <div class="hero-brand-text">
+                <p class="eyebrow">HAPPY CARAVAN — أبها</p>
+                <h2>استيقظ على سحر الضباب<br>وإطلالات لا تُنسى</h2>
+              </div>
+            </div>
+            <p class="hero-tagline">وحدات إقامة فريدة وسط غابات أبها — الهدوء والجمال في انتظارك.</p>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">وحداتنا في أبها</p>
+              <h2>اختر وجهتك بين الغيوم والطبيعة</h2>
+            </div>
+            <span class="pill" id="unitCount">0 وحدة</span>
+          </div>
+
+          <div id="homeStatus" class="status-card hidden"></div>
+
+          <div id="unitsGrid" class="units-grid" aria-live="polite">
+            <article class="unit-card skeleton-card">
+              <div class="skeleton skeleton-image"></div>
+              <div class="unit-card-body">
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line medium"></div>
+              </div>
+            </article>
+            <article class="unit-card skeleton-card">
+              <div class="skeleton skeleton-image"></div>
+              <div class="unit-card-body">
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line medium"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav bottom-nav-2col" aria-label="التنقل السفلي">
+        <a class="bottom-nav-link is-active" href="index.html">
+          <span class="nav-icon">🏠</span>
+          <span>الرئيسية</span>
+        </a>
+        <a class="bottom-nav-link" href="#unitsGrid">
+          <span class="nav-icon">🛖</span>
+          <span>الوحدات</span>
+        </a>
+      </nav>
+    </div>
+
+    <div id="videoModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel video-modal-panel" role="dialog" aria-modal="true" aria-label="مشغل الفيديو">
+        <button class="icon-btn modal-close" type="button" data-close-modal aria-label="إغلاق الفيديو">
+          ×
+        </button>
+        <div class="modal-head">
+          <p class="eyebrow">فيديو الوحدة</p>
+          <h3 id="videoModalTitle">معاينة الفيديو</h3>
+        </div>
+        <video id="modalVideo" controls playsinline preload="none"></video>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="assertive"></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
