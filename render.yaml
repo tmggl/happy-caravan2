@@ -1,8 +1,7 @@
-staticSites:
-  - name: happy-caravan
-    repo: https://github.com/tmggl/happy-caravan2
-    branch: main
-    rootDir: .
+services:
+  - type: web
+    name: happy-caravan
+    runtime: static
     buildCommand: echo "No build step"
-    publishPath: .
+    staticPublishPath: .
     pullRequestPreviewsEnabled: false
